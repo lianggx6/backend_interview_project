@@ -45,7 +45,7 @@ func NewProducer(brokerAddress, topic string) *Producer {
 func (p *Producer) ProduceMessages(ctx context.Context, numMessages int) error {
 	log.Printf("Starting to produce %d messages across partitions...", numMessages)
 
-	for i := range numMessages {
+	for i := 0; i < numMessages; i++ {
 		key := fmt.Sprintf("key-%d", i)
 		value := fmt.Sprintf("message-%d: Hello from Kafka producer at %s", i, time.Now().Format(time.RFC3339))
 

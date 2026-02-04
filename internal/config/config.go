@@ -1,9 +1,10 @@
 package config
 
 import (
+	"fmt"
+
 	"backend_interview_project/internal/docker"
 	"backend_interview_project/internal/kafka"
-	"fmt"
 )
 
 type Config struct {
@@ -18,7 +19,9 @@ type KafkaConfig struct {
 }
 
 type AppConfig struct {
-	NumMessages int
+	NumMessages int // 生产的消息数量
+	MaxWorker   int // 最大并发数
+	MaxRetries  int // 最大重试次数
 }
 
 func Load() *Config {
@@ -31,7 +34,9 @@ func Load() *Config {
 			GroupID:           "test-consumer-group",
 		},
 		App: AppConfig{
-			NumMessages: 10,
+			NumMessages: 30, // 增加消息数量以更好地展示并发效果
+			MaxWorker:   3,  // 每个分区3个worker
+			MaxRetries:  3,  // 最多重试3次
 		},
 	}
 }
