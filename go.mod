@@ -6,6 +6,7 @@ require (
 	github.com/docker/docker v28.5.2+incompatible
 	github.com/docker/go-connections v0.6.0
 	github.com/segmentio/kafka-go v0.4.49
+	golang.org/x/sync v0.19.0
 )
 
 require (
